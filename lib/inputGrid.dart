@@ -6,7 +6,8 @@ class InputGrid extends StatelessWidget {
     final height = MediaQuery.of(context).size.height * 0.15;
 
     return Table(
-      border: TableBorder.all(style: BorderStyle.solid, color: Colors.black12, width: 1.5),
+      border: TableBorder.all(
+          style: BorderStyle.solid, color: Colors.white12, width: 1.5),
       children: [
         TableRow(children: [
           TableButton("7", height),
@@ -27,20 +28,17 @@ class InputGrid extends StatelessWidget {
           TableButton("*", height),
         ]),
         TableRow(children: [
-          TableButton("±", height),
+          TableButton(Icons.backspace, height),
           TableButton("0", height),
-          TableButton(".", height),
+          TableButton("=", height),
           TableButton("/", height),
-])
+        ])
       ],
     );
   }
 }
 
-
-
 class TableButton extends StatelessWidget {
-
   final symbol, height;
   TableButton(this.symbol, this.height);
 
@@ -50,7 +48,10 @@ class TableButton extends StatelessWidget {
       height: this.height,
       child: FlatButton(
         onPressed: (){},
-        child: Text("${this.symbol}", textScaleFactor: 2.0, textAlign: TextAlign.center),
+        child: symbol is String
+            ? Text("${this.symbol}",
+                textScaleFactor: 2.0, textAlign: TextAlign.center)
+            : Icon(symbol),
       ),
     );
   }

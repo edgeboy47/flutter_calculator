@@ -5,13 +5,15 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
 
+  final ThemeData myTheme = ThemeData(
+    brightness: Brightness.dark
+  );
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: myTheme,
       home: Calculator(),
     );
   }
